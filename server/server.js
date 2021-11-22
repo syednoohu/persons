@@ -8,7 +8,10 @@ const personRoutes = require('./resources/persons/person.router');
 connectDB();
 app.use(express.json());  // will this do the job of bodyParser?
 
-app.get('/',(req,res)=>res.send(' API Running...111!!'));
+app.get('/',(req,res)=>res.status(202).send(' API Running...111!!'));
+
+
+
 
 app.use('/api/persons', personRoutes);
 

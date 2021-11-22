@@ -6,9 +6,9 @@ import logo from '../image/logo.png';
 import {useState} from 'react';
 
 const genderOpt = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-  { key: 'o', text: 'Other', value: 'other' },
+  { key: 'm', text: 'Male', value: 'Male' },
+  { key: 'f', text: 'Female', value: 'Female' },
+  { key: 'o', text: 'Other', value: 'Other' },
 ]
 
 export default function PageHeader() {
@@ -32,25 +32,28 @@ export default function PageHeader() {
     )
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit1 = (e) => {
     e.preventDefault();
     handleModal(false)
     console.log("form submitted")
     console.log(formData)
   }
 
-  const  handleSubmit1 = async (e) =>  {
+  const  handleSubmit = async (e) =>  {
     e.preventDefault();
     handleModal(false)
+    // const url = './';
 
+    console.log("form submitted")
+    console.log(formData)
     const url = './api/persons';
     const data = JSON.stringify({
-      name    : formData.fname,
-      branch  : formData.lname,
-      userName: formData.age,
-      remark  : formData.gender,
-      remark  : formData.stack,
-      remark  : formData.about
+      firstname    : formData.fname,
+      lastname  : formData.lname,
+      age: formData.age,
+      gender  : formData.gender,
+      stack  : formData.stack,
+      about  : formData.about
     });
     try {
       const config = {
@@ -59,13 +62,12 @@ export default function PageHeader() {
         }
       };
       const res = await axios.post(url, data, config);
+        console.log(res.statusText)
         } catch (error) {
       console.log('Err printed in Client : ', error.response);
     }
     
   }
-
-
 
   return (
     <Segment >

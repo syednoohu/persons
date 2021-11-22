@@ -1,8 +1,10 @@
 const {Person} = require('./person.model');
 
 const personController = {
-   async createPerson(req, res) {
-    const {firstname, lastname, age, stack, about} = req.body;
+
+  async createPerson(req, res) {
+    console.log ("You WON")
+    const {firstname, lastname, age, gender, stack, about} = req.body;
     try {
       person = new Person({firstname, lastname, age, gender, stack, about});
       await person.save();

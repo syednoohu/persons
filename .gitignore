@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+# git remote add origin https://github.com/syednoohu/persons.git
 #…or push an existing repository from the command line
 #git remote add origin https://github.com/syednoohu/persons.git
 #git branch -M master
