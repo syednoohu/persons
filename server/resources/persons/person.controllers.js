@@ -17,13 +17,11 @@ const personController = {
 
   },
   
-   getPersons(req, res) {
-    // console.log('GET - getPerosns')
-    return res.status(200).send('GET - xxxxxxxxxxxxxxgetPerosns');
-
-      // let allPersons = await Person.find({})
-      // return res.status(200).json({allPersons});
-      // return res.status(200).json({ message : { message : 'GET : http://localhost:5000/api/persons'}});
+  async getPersons(req, res) {
+    console.log('GET - getPerosns')
+    let response = await Person.find({})
+    return res.status(200).json(response);
+    // return res.status(200).json({ message : { message : 'GET : http://localhost:5000/api/persons'}});
 
   },
 
