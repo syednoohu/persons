@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  persons: [],
+  persons: []
 }
 
 export const personSlice = createSlice({
@@ -9,12 +9,13 @@ export const personSlice = createSlice({
   initialState,
   reducers: {
     addPerson: (state, action) => {
-      state = action.payload
+      state.persons = action.payload
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addPerson } = personSlice.actions
 
+export const getAllPersons  = (state) => state.persons.persons
+export const { addPerson } = personSlice.actions
 export default personSlice.reducer
