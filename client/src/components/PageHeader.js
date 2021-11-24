@@ -21,7 +21,8 @@ export default function PageHeader() {
   const dispatch = useDispatch();
   useEffect(() => {
     const getAllPersons = async() => {
-      const res = await axios.get('./api/persons')
+      const res = await axios.get('https://persons-server.herokuapp.com/api/persons')
+      // const res = await axios.get('./api/persons') for localhost
       console.log(res.data)
       dispatch(addPerson(res.data))
     }
@@ -56,7 +57,8 @@ export default function PageHeader() {
     console.log(formData)
     setformData({ stack:'mern', gender:"Male"});
 
-    const url = './api/persons';
+    const url = 'https://persons-server.herokuapp.com/api/persons';
+    // const url = './api/persons';   for local
     const data = JSON.stringify({
       firstname    : formData.fname,
       lastname  : formData.lname,

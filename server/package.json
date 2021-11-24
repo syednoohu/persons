@@ -4,13 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server"
+    "server": "nodemon server.js"
   },
   "author": "Syed",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "config": "^3.3.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.13.0",
     "mongoose": "^6.0.13",
