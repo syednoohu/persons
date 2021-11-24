@@ -10,7 +10,7 @@ personRouter.get('/',personController.getPersons);
 personRouter.get('/:name', personController.getPerson);
 
 personRouter.put('/', personController.updatePerson);
-personRouter.delete('/', personController.deletePerson);
+personRouter.delete('/:id', personController.deletePerson);
 
 module.exports = personRouter;
 

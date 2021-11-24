@@ -2,10 +2,31 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { getAllPersons } from '../features/personSlice'
 
+import axios from 'axios';
+
 import {  Table, Button, Icon } from 'semantic-ui-react';
 export default function PersonListing() {
   const persons = useSelector(getAllPersons)
-  console.log(persons)
+
+  const  deletePerson = async (id) =>  {
+
+    // const url = 'https://persons-server.herokuapp.com/api/persons';
+    const url = `http://localhost:5000/api/persons/${id}`;   // for local
+
+    try {
+      const config = {
+        headers :{
+          'content-type' : 'application/json'
+        }
+      };
+      const res = await axios.delete(url, config);
+        console.log(res)
+        } catch (error) {
+      console.log('Err printed in Client : ', error.response);
+    }
+    
+  }
+
   return (
     <Table celled striped singleLine fixed>
     <Table.Header>
@@ -30,18 +51,22 @@ export default function PersonListing() {
           <Table.Cell>{about}</Table.Cell>
 
           <Table.Cell width={2}>
-            <Button   icon labelPosition='left' primary size='mini'>
-              <Icon name='user' /> View
+            <Button   icon labelPosition='left' primary size='mini'
+              >
+              <Icon name='eye' /> View
             </Button>
           </Table.Cell>
           <Table.Cell width={2}>
-            <Button  icon labelPosition='left' primary size='mini'>
-              <Icon name='user' /> Edit
+            <Button  icon labelPosition='left' color = 'grey' size='mini'>
+              <Icon name='edit' /> Edit
             </Button>
           </Table.Cell>
-          <Table.Cell width={2}>
-            <Button icon labelPosition='left' primary size='mini'>
-              <Icon name='user' /> Delete
+          <Table.Cell width={2}
+          >
+            <Button  icon labelPosition='left' color = 'red' size='mini'
+              onClick={()=>{deletePerson(_id)}}            
+            >
+              <Icon name='delete' /> Delete
             </Button>
           </Table.Cell>
 

@@ -1,3 +1,4 @@
+// const { default: personSlice } = require('../../../client/src/features/personSlice');
 const {Person} = require('./person.model');
 
 const personController = {
@@ -37,8 +38,12 @@ const personController = {
 
   },
   
-  deletePerson(req, res) {
-    return res.status(200).json({"Deleted" : "ok"});
+  async deletePerson(req, res) {
+    console.log(req.params.id)
+    let person = await Person.findByIdAndDelete({_id:req.params.id});
+    console.log(person)
+    // console.log ("async deletePerson(req, res)", _id)
+    // return res.status(200).json({person, _id, "Deleted" : "ok"});
 
   }
 }
