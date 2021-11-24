@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Segment, Grid, Button, Icon, Image, Modal, Form, Header } from 'semantic-ui-react';
-import { addPerson } from '../features/personSlice';
+import { addPersons, addPerson } from '../features/personSlice';
 
 
 import logo from '../image/logo.png';
@@ -24,7 +24,7 @@ export default function PageHeader() {
       // const res = await axios.get('https://persons-server.herokuapp.com/api/persons')
       const res = await axios.get('http://localhost:5000/api/persons') //for localhost
       console.log(res.data)
-      dispatch(addPerson(res.data))
+      dispatch(addPersons(res.data))
     }
     getAllPersons()
     return () => {
@@ -71,7 +71,9 @@ export default function PageHeader() {
         }
       };
       const res = await axios.post(url, data, config);
-        console.log(res)
+        console.log(res)  
+        dispatch(addPerson(res.data))
+
         } catch (error) {
       console.log('Err printed in Client : ', error.response);
     }

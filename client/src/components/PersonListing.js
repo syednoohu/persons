@@ -1,12 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { getAllPersons } from '../features/personSlice'
+import { useDispatch } from 'react-redux';
+import { removePerson } from '../features/personSlice';
 
 import axios from 'axios';
 
 import {  Table, Button, Icon } from 'semantic-ui-react';
 export default function PersonListing() {
   const persons = useSelector(getAllPersons)
+  const dispatch = useDispatch();
 
   const  deletePerson = async (id) =>  {
 
@@ -20,9 +23,12 @@ export default function PersonListing() {
         }
       };
       const res = await axios.delete(url, config);
-        console.log(res)
+      dispatch(removePerson(res.data))
+
+      console.log(res)
+      // once deleted in DB , delete the same record in Redux(dispatch) so to update the UI
         } catch (error) {
-      console.log('Err printed in Client : ', error.response);
+      console.log('Err printed in Client : ', error);
     }
     
   }
