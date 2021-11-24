@@ -21,8 +21,8 @@ export default function PageHeader() {
   const dispatch = useDispatch();
   useEffect(() => {
     const getAllPersons = async() => {
-      // const res = await axios.get('https://persons-server.herokuapp.com/api/persons')
-      const res = await axios.get('http://localhost:5000/api/persons') //for localhost
+      const res = await axios.get('https://persons-server.herokuapp.com/api/persons')
+      // const res = await axios.get('http://localhost:5000/api/persons') //for localhost
       console.log(res.data)
       dispatch(addPersons(res.data))
     }
@@ -54,8 +54,8 @@ export default function PageHeader() {
     handleModal(false)
     setformData({ stack:'mern', gender:"Male"});
 
-    // const url = 'https://persons-server.herokuapp.com/api/persons';
-    const url = 'http://localhost:5000/api/persons';   // for local
+    const url = 'https://persons-server.herokuapp.com/api/persons';
+    // const url = 'http://localhost:5000/api/persons';   // for local
     const data = JSON.stringify({
       firstname    : formData.fname,
       lastname  : formData.lname,
