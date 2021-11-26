@@ -7,7 +7,7 @@ const cors = require('cors');
 const personRoutes = require('./resources/persons/person.router');
 
 connectDB();
-app.use(express.json());  // will this do the job of bodyParser?
+app.use(express.json());  
 app.use(cors())
 app.get('/',(req,res)=>res.status(202).send(' API Running...111!!'));
 
