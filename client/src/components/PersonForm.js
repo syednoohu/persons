@@ -16,7 +16,6 @@ const genderOpt = [
   { key: 'o', text: 'Other', value: 'Other' },
 ]
 
-
 export default function PersonForm() {
   const dispatch = useDispatch();
   const ifFormToOpen = useSelector(ifopenPersonForm)
@@ -52,8 +51,8 @@ export default function PersonForm() {
     dispatch(formClose(true))
     setformData({ stack:'mern', gender:"Male"});
 
-    // const url = 'https://persons-server.herokuapp.com/api/persons';
-    const url = 'http://localhost:5000/api/persons';   // for local
+    const url = 'https://persons-server.herokuapp.com/api/persons';
+    // const url = 'http://localhost:5000/api/persons';   // for local
     const data = JSON.stringify({
       firstname    : formData.fname,
       lastname  : formData.lname,

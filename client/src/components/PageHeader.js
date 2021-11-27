@@ -22,9 +22,8 @@ export default function PageHeader() {
   
   useEffect(() => {
     const getAllPersons = async() => {
-      // const res = await axios.get('https://persons-server.herokuapp.com/api/persons')
-      const res = await axios.get('http://localhost:5000/api/persons') //for localhost
-      console.log(res.data)
+      const res = await axios.get('https://persons-server.herokuapp.com/api/persons')
+      // const res = await axios.get('http://localhost:5000/api/persons') //for localhost
       dispatch(addPersons(res.data))
     }
     getAllPersons()

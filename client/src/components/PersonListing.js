@@ -21,8 +21,8 @@ export default function PersonListing() {
     console.log("to View", id)
     dispatch(formOpen(true))
     dispatch(formView(true))
-    // const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
-    const url = `http://localhost:5000/api/persons/${id}`;   // for local
+    const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
+    // const url = `http://localhost:5000/api/persons/${id}`;   // for local
 
     try {
       const config = {
@@ -49,8 +49,8 @@ export default function PersonListing() {
 
 
     const  deletePerson = async (id) =>  {
-    // const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
-    const url = `http://localhost:5000/api/persons/${id}`;   // for local
+    const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
+    // const url = `http://localhost:5000/api/persons/${id}`;   // for local
 
     try {
       const config = {

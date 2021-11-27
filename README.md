@@ -1,3 +1,3 @@
-To see live :
+Updated :
 
-https://619e6ebaaae0c176884a8d5b--mypersonlist.netlify.app/
+https://61a27493a014276866584138--mypersonlist.netlify.app/
