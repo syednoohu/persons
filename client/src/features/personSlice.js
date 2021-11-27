@@ -15,7 +15,7 @@ export const personSlice = createSlice({
     addPerson: (state, action) => {
       state.persons.push(action.payload)
     },
-
+    
     removePerson: (state, action) => {
       let index = state.persons.findIndex(p => p._id ===action.payload._id);
       state.persons.splice(index, 1)

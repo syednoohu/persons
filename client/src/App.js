@@ -1,14 +1,15 @@
-// import './App.css';
-
+import PersonListing from './components/PersonListing';
+import PersonForm from './components/PersonForm';
 
 import PageHeader  from './components/PageHeader';
+import { Segment } from 'semantic-ui-react';
 function App() {
   return (
-    <div className="App">
+    <Segment>
       <PageHeader/>
-
-     
-    </div>
+      <PersonForm/>
+      <PersonListing />
+    </Segment>
   );
 }
 
