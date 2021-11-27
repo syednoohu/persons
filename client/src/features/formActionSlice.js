@@ -53,7 +53,7 @@ export const formActionSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const openPersonForm  = (state) => state.formActions.actions.openForm  // to know Modal 'personForm' to open
+export const ifopenPersonForm  = (state) => state.formActions.actions.openForm  // to know Modal 'personForm' to open
 export const ifNewPerson  = (state) => state.formActions.actions.newForm  // to know user in EDIT mode
 export const ifEditPerson  = (state) => state.formActions.actions.editForm  // to know user in EDIT mode
 export const ifViewPerson  = (state) => state.formActions.actions.viewForm  // to know user in EDIT mode

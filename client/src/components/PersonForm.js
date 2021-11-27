@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Modal, Icon, Form, Header, Segment, SegmentGroup } from 'semantic-ui-react';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
-import { openPersonForm, ifNewPerson, ifViewPerson, ifEditPerson } from '../features/formActionSlice'
+import { ifopenPersonForm, ifNewPerson, ifViewPerson, ifEditPerson } from '../features/formActionSlice'
 
 import { addPerson } from '../features/personSlice';
 import { formOpen, formClose } from '../features/formActionSlice';
@@ -19,15 +19,14 @@ const genderOpt = [
 
 export default function PersonForm() {
   const dispatch = useDispatch();
-  const ifFormToOpen = useSelector(openPersonForm)
+  const ifFormToOpen = useSelector(ifopenPersonForm)
+  const newPerson = useSelector(ifNewPerson)
+  const viewPerson = useSelector(ifViewPerson)
+  const editPerson = useSelector(ifEditPerson)
   const [formData, setformData] = useState({ stack:'mern', gender:"Male"});
-
-  useEffect(() => {
-  // FIND EDIT or NEW persons from STATE
-  // ACCORDINGLY UPDATE THE formData values
-
-  }, [])  // check if edit/new
-
+  
+  let formTitle =  newPerson ? "Add New Person" : editPerson  ?  "Edit Person" : viewPerson ?  "View Person"  : null
+  let formIcon =  newPerson ? "add" : editPerson  ?  "edit" : viewPerson ?  "eye"  : null
   const handleChange = (e) => {
     e.persist();
     setformData(formData => ({ 
@@ -35,7 +34,6 @@ export default function PersonForm() {
       [e.target.name]: e.target.value })
     )
   }
-
 
   const  handleClose = () =>  {
     dispatch(formClose())
@@ -95,7 +93,7 @@ export default function PersonForm() {
         size="large"
         closeIcon 
         dimmer ='blurring' >
-        <Header icon="pencil" content="Add New Person" as="h2" />
+        <Header icon={formIcon} content={formTitle} as="h2" />
         <Modal.Content>
           <Form.Group widths='equal'>
             <Form.Input  value = {formData.fname ||''} name = 'fname' label='First name' placeholder='First name' width={7} required onChange={handleChange}  />
