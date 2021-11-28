@@ -87,13 +87,13 @@ export default function PersonForm() {
       // check if addPerson OR editPerson
       // const res = await axios.put(url, data, config);
       if (newPerson){
-        // const url = 'https://persons-server.herokuapp.com/api/persons';
-        const url = 'http://localhost:5000/api/persons';   // for local
+        const url = 'https://persons-server.herokuapp.com/api/persons';
+        // const url = 'http://localhost:5000/api/persons';   // for local
         const res = await axios.post(url, data, config);
         dispatch(addPerson(res.data))
       }else if (editPerson){
-        // const url = `https://persons-server.herokuapp.com/api/persons/${selectedPerson.person._id}`;
-        const url = `http://localhost:5000/api/persons/${selectedPerson.person._id}`;   // for local
+        const url = `https://persons-server.herokuapp.com/api/persons/${selectedPerson.person._id}`;
+        // const url = `http://localhost:5000/api/persons/${selectedPerson.person._id}`;   // for local
 
         console.log(selectedPerson)
         console.log(selectedPerson.person)
@@ -191,9 +191,6 @@ export default function PersonForm() {
         </Modal>
         : null
       }  
-
-          
-
 </Segment>
   )
 }

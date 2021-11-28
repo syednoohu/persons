@@ -18,8 +18,8 @@ export default function PersonListing() {
     dispatch(formOpen(true))
     dispatch(formView(true))
     //DRY - to refactor(A)
-    // const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
-    const url = `http://localhost:5000/api/persons/${id}`;   // for local
+    const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
+    // const url = `http://localhost:5000/api/persons/${id}`;   // for local
 
     try {
       const config = {
@@ -39,9 +39,9 @@ export default function PersonListing() {
     console.log("to edit", id)
     dispatch(formOpen(true))
     dispatch(formEdit(true))
-    // const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
+    const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
     //DRY - to refactor(A)
-    const url = `http://localhost:5000/api/persons/${id}`;   // for local
+    // const url = `http://localhost:5000/api/persons/${id}`;   // for local
 
     try {
       const config = {
@@ -61,8 +61,8 @@ export default function PersonListing() {
 
 
     const  deletePerson = async (id) =>  {
-    // const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
-    const url = `http://localhost:5000/api/persons/${id}`;   // for local
+    const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
+    // const url = `http://localhost:5000/api/persons/${id}`;   // for local
 
     try {
       const config = {

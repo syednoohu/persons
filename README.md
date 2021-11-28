@@ -1,3 +1,3 @@
 Updated :
 
-https://61a27493a014276866584138--mypersonlist.netlify.app/
+https://61a3c2a6b5f8fa3f1f02bcdc--mypersonlist.netlify.app/
