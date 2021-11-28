@@ -2,17 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { getAllPersons } from '../features/personSlice'
 import { useDispatch } from 'react-redux';
-import { removePerson } from '../features/personSlice';
-import { useState } from 'react';
+import { removePerson, selectedPerson } from '../features/personSlice';
 import {formOpen,formEdit, formView } from '../features/formActionSlice';
-
-import PersonForm from './PersonForm'
 
 import axios from 'axios';
 import {  Table, Button, Icon, Segment } from 'semantic-ui-react';
 
 export default function PersonListing() {
-//  const [editMode, handleEdit] = useState(false);
 
  const persons = useSelector(getAllPersons)
  const dispatch = useDispatch();
@@ -21,8 +17,9 @@ export default function PersonListing() {
     console.log("to View", id)
     dispatch(formOpen(true))
     dispatch(formView(true))
-    const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
-    // const url = `http://localhost:5000/api/persons/${id}`;   // for local
+    //DRY - to refactor(A)
+    // const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
+    const url = `http://localhost:5000/api/persons/${id}`;   // for local
 
     try {
       const config = {
@@ -31,26 +28,41 @@ export default function PersonListing() {
         }
       };
       const res = await axios.get(url, config);
-      // once deleted in DB , delete the same record in Redux(dispatch) so to update the UI
-      // dispatch(selectedPerson(res.data))/// left here
+      dispatch(selectedPerson(res.data))
 
         } catch (error) {
       console.log('Err printed in Client : ', error);
     }
 
   }
-  const  editPerson = (id) =>  {
+  const  editPerson = async(id) =>  {
     console.log("to edit", id)
     dispatch(formOpen(true))
     dispatch(formEdit(true))
+    // const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
+    //DRY - to refactor(A)
+    const url = `http://localhost:5000/api/persons/${id}`;   // for local
+
+    try {
+      const config = {
+        headers :{
+          'content-type' : 'application/json'
+        }
+      };
+      const res = await axios.get(url, config);
+      dispatch(selectedPerson(res.data))
+
+        } catch (error) {
+      console.log('Err printed in Client : ', error);
+    }
 
 
   }
 
 
     const  deletePerson = async (id) =>  {
-    const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
-    // const url = `http://localhost:5000/api/persons/${id}`;   // for local
+    // const url = `https://persons-server.herokuapp.com/api/persons/${id}`;
+    const url = `http://localhost:5000/api/persons/${id}`;   // for local
 
     try {
       const config = {
@@ -121,9 +133,5 @@ export default function PersonListing() {
       </Table.Body>
     </Table>
     </Segment>
-
-
-
-
   )
 }

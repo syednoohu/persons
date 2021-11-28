@@ -1,4 +1,3 @@
-// const { default: personSlice } = require('../../../client/src/features/personSlice');
 const {Person} = require('./person.model');
 
 const personController = {
@@ -24,14 +23,17 @@ const personController = {
   },
 
   async getPerson(req, res) {
-    let person = await Person.find({name : req.params.name});
-    return res.status(200).json({person});
+    let person = await Person.findById({_id:req.params.id});
+    return res.status(200).json({person});  // WY {person}
     // return res.status(200).json({ message : { message : 'GET : http://localhost:5000/api/users'}});
 
 },
 
-  updatePerson(req, res) {
-    return res.status(200).json({ message : { message : 'PUT : http://localhost:5000/api/persons'}});
+  async updatePerson(req, res) {
+    console.log(req.body)
+    let person = await Person.findByIdAndUpdate({_id:req.params.id},{$set:req.body} , {new: true});
+    console.log(person,req.params.id)
+    return res.status(200).json(person);
 
   },
   

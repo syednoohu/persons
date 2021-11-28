@@ -30,7 +30,7 @@ export default function PageHeader() {
     // return () => {
     //   console.log("cleaningup")
     // }
-  },[])
+  },[dispatch])
 
   return (
     <Segment color = 'grey' secondary >
